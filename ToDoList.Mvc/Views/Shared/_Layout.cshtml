@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] TodoList.Mvc</title>
+
+	<link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/TodoList.Mvc.styles.css" asp-append-version="true" />
+
+	<style>
+		body {
+			background-color: #eceff4; }
+	</style>	
+</head>
+<body>	
+	<div class="container-fluid" style="min-height: 100vh;">
+		<div class="row w-100 align-items-center flex-column pt-lg-5" style="min-height: 100vh;">
+			<div class="col-8">
+				<main role="main" class="w-100">
+					<header class="d-flex align-items-center justify-content-between">
+						<div></div>
+						<h1 class="text-primary fw-bold text-center" style="font-size: 38px">
+							<i class="fa-solid fa-clipboard-list"></i>Todo list
+						</h1>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<a href="Account/Logout" class="btn">
+								Log out
+							</a>
+						}
+						else
+						{
+							<div></div>
+						}
+					</header>
+					@RenderBody()
+				</main>
+				<footer class="footer text-end mt-3 w-100">
+					&copy; 2024 - Todo list
+				</footer>
+			</div>
+		</div>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
